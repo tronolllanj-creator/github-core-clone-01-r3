@@ -1,6 +1,6 @@
 [![make.fun · github-core-clone-01](https://make.fun/badge/github-core-clone-01.svg)](https://make.fun/bounty/github-core-clone-01?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
-[![rank](https://make.fun/badge/github-core-clone-01/tronolllanj-creator/github-core-clone-01-r2/rank.svg)](https://make.fun/bounty/github-core-clone-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
-[![reward](https://make.fun/badge/github-core-clone-01/tronolllanj-creator/github-core-clone-01-r2/reward.svg)](https://make.fun/bounty/github-core-clone-01?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
+[![rank](https://make.fun/badge/github-core-clone-01/tronolllanj-creator/github-core-clone-01-r3/rank.svg)](https://make.fun/bounty/github-core-clone-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
+[![reward](https://make.fun/badge/github-core-clone-01/tronolllanj-creator/github-core-clone-01-r3/reward.svg)](https://make.fun/bounty/github-core-clone-01?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
 
 # make.fun github-core-clone-01
 
@@ -43,7 +43,12 @@ To run the local conformance and performance test suite provided by the kit:
 node --experimental-strip-types sdk/run.ts --url http://127.0.0.1:PORT --token TOK --perf
 ```
 
-*(Passes 120/120 local conformance tests and scores 975/1000 total with performance metrics).*
+*(Passes 120/120 local conformance tests and scores 978/1000 total with performance metrics).*
+
+## Round-3 Fixes (perf strike)
+
+- **Fast pack inflation**: `inflateAt` in gitobj.ts now inflates the remainder once and locates the exact compressed length via an Adler-32 trailer scan, instead of binary-searching the length with throwing `inflateSync` probes.
+- **Fast routing**: app.ts parses the URL manually and dispatches REST routes before the git regexes, with lazy query parsing.
 
 ## Round-2 Fixes
 
